@@ -1,9 +1,9 @@
-﻿/*==============================================================*/
-/* Table : TBSEXE                                               */
-/*==============================================================*/
-create table TBSEXE (
-   IDSEXE               int                  not null,
-   LIBSEXE              varchar(20)          null,
-   ABRSEXE              char(1)              null,
-   constraint PK_TBSEXE primary key nonclustered (IDSEXE)
-)
+﻿CREATE TABLE [dbo].[TBSEXE](
+	[IDSEXE] [int] NOT NULL,
+	[LIBSEXE] [varchar](20) NULL,
+	[ABRSEXE] [char](1) NULL,
+ CONSTRAINT [PK_TBSEXE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDSEXE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

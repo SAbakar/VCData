@@ -65,6 +65,7 @@
     <Build Include="dbo\Tables\TBABSENCE.sql" />
     <Build Include="dbo\Tables\TBACCOMPTE.sql" />
     <Build Include="dbo\Tables\TBAFFECTATION_ZONE.sql" />
+    <Build Include="dbo\Tables\TBARRONDISSEMENT.sql" />
     <Build Include="dbo\Tables\TBAYANTDROIT.sql" />
     <Build Include="dbo\Tables\TBAYANTDROIT_PERS.sql" />
     <Build Include="dbo\Tables\TBBANQUE.sql" />
@@ -94,5 +95,8 @@
     <Build Include="dbo\Tables\TBVAGUE.sql" />
     <Build Include="dbo\Tables\TBZONE.sql" />
     <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>

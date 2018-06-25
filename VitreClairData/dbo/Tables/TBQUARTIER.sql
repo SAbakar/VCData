@@ -1,8 +1,16 @@
-﻿/*==============================================================*/
-/* Table : TBQUARTIER                                           */
-/*==============================================================*/
-create table TBQUARTIER (
-   IDQUARTIER           int                  not null,
-   LIBQUARTIER          varchar(20)          null,
-   constraint PK_TBQUARTIER primary key nonclustered (IDQUARTIER)
-)
+﻿CREATE TABLE [dbo].[TBQUARTIER](
+	[IDQUARTIER] [int] NOT NULL,
+	[IDARRONDISSEMENT] [int] NULL,
+	[LIBQUARTIER] [varchar](20) NULL,
+ CONSTRAINT [PK_TBQUARTIER] PRIMARY KEY NONCLUSTERED 
+(
+	[IDQUARTIER] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[TBQUARTIER]  WITH CHECK ADD  CONSTRAINT [FK_TBQUARTIER_TBARRONDISSEMENT] FOREIGN KEY([IDARRONDISSEMENT])
+REFERENCES [dbo].[TBARRONDISSEMENT] ([IDARRONDISSEMENT])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBQUARTIER] CHECK CONSTRAINT [FK_TBQUARTIER_TBARRONDISSEMENT]

@@ -1,13 +1,13 @@
-﻿/*==============================================================*/
-/* Table : TBDEPART                                             */
-/*==============================================================*/
-create table TBDEPART (
-   IDDEPART             int                  not null,
-   INDEMNITEDEPART      money                null,
-   SOLDECREDITDEPART    money                null,
-   ABSENCEDEPART        money                null,
-   DECEDER              bit                  null,
-   PRIMEDECES           money                null,
-   ANCIENETE            int                  null,
-   constraint PK_TBDEPART primary key nonclustered (IDDEPART)
-)
+﻿CREATE TABLE [dbo].[TBDEPART](
+	[IDDEPART] [int] NOT NULL,
+	[INDEMNITEDEPART] [money] NULL,
+	[SOLDECREDITDEPART] [money] NULL,
+	[ABSENCEDEPART] [money] NULL,
+	[DECEDER] [bit] NULL,
+	[PRIMEDECES] [money] NULL,
+	[ANCIENETE] [int] NULL,
+ CONSTRAINT [PK_TBDEPART] PRIMARY KEY NONCLUSTERED 
+(
+	[IDDEPART] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

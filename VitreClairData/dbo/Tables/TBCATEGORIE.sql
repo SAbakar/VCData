@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBCATEGORIE                                          */
-/*==============================================================*/
-create table TBCATEGORIE (
-   IDCATEGORIE          int                  not null,
-   LIBCATEGORIE         varchar(50)          null,
-   constraint PK_TBCATEGORIE primary key nonclustered (IDCATEGORIE)
-)
+﻿CREATE TABLE [dbo].[TBCATEGORIE](
+	[IDCATEGORIE] [int] NOT NULL,
+	[LIBCATEGORIE] [varchar](50) NULL,
+ CONSTRAINT [PK_TBCATEGORIE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDCATEGORIE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

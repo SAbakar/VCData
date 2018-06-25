@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBSALAIRE                                            */
-/*==============================================================*/
-create table TBSALAIRE (
-   IDSALAIRE            int                  not null,
-   PERIODESALAIRE       datetime             null,
-   constraint PK_TBSALAIRE primary key nonclustered (IDSALAIRE)
-)
+﻿CREATE TABLE [dbo].[TBSALAIRE](
+	[IDSALAIRE] [int] NOT NULL,
+	[PERIODESALAIRE] [datetime] NULL,
+ CONSTRAINT [PK_TBSALAIRE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDSALAIRE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

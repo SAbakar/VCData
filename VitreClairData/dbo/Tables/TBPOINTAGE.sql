@@ -1,27 +1,28 @@
-﻿/*==============================================================*/
-/* Table : TBPOINTAGE                                           */
-/*==============================================================*/
-create table TBPOINTAGE (
-   IDPERSONNEL          int                  not null,
-   IDZONE               int                  not null,
-   HEUREARRIVEPTAGE     datetime             null,
-   HEUREDEPARTPTAGE     datetime             null,
-   IDPOINTEUR           int                  null,
-   DATEPTAGE            datetime             null,
-   ABSENTPTAGE          bit                  null,
-   constraint PK_TBPOINTAGE primary key nonclustered (IDPERSONNEL, IDZONE)
-)
+﻿CREATE TABLE [dbo].[TBPOINTAGE](
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDZONE] [int] NOT NULL,
+	[HEUREARRIVEPTAGE] [datetime] NULL,
+	[HEUREDEPARTPTAGE] [datetime] NULL,
+	[IDPOINTEUR] [int] NULL,
+	[DATEPTAGE] [datetime] NULL,
+	[ABSENTPTAGE] [bit] NULL,
+ CONSTRAINT [PK_TBPOINTAGE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPERSONNEL] ASC,
+	[IDZONE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : POINTAGE2_FK                                         */
-/*==============================================================*/
-create index POINTAGE2_FK on TBPOINTAGE (
-IDPERSONNEL ASC
-)
+ALTER TABLE [dbo].[TBPOINTAGE]  WITH CHECK ADD  CONSTRAINT [FK_TBPOINTAGE_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : POINTAGE_FK                                          */
-/*==============================================================*/
-create index POINTAGE_FK on TBPOINTAGE (
-IDZONE ASC
-)
+
+ALTER TABLE [dbo].[TBPOINTAGE] CHECK CONSTRAINT [FK_TBPOINTAGE_tbPersonnel]
+GO
+ALTER TABLE [dbo].[TBPOINTAGE]  WITH CHECK ADD  CONSTRAINT [FK_TBPOINTAGE_TBZONE] FOREIGN KEY([IDZONE])
+REFERENCES [dbo].[TBZONE] ([IDZONE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBPOINTAGE] CHECK CONSTRAINT [FK_TBPOINTAGE_TBZONE]

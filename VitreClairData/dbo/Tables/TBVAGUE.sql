@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBVAGUE                                              */
-/*==============================================================*/
-create table TBVAGUE (
-   IDVAGUE              int                  not null,
-   LIBVAGUE             varchar(2)           null,
-   constraint PK_TBVAGUE primary key nonclustered (IDVAGUE)
-)
+﻿CREATE TABLE [dbo].[TBVAGUE](
+	[IDVAGUE] [int] NOT NULL,
+	[LIBVAGUE] [varchar](10) NULL,
+ CONSTRAINT [PK_TBVAGUE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDVAGUE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

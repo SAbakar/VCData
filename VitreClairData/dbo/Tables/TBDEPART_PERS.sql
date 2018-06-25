@@ -1,22 +1,23 @@
-﻿/*==============================================================*/
-/* Table : TBDEPART_PERS                                        */
-/*==============================================================*/
-create table TBDEPART_PERS (
-   IDDEPART             int                  not null,
-   IDPERSONNEL          int                  not null,
-   constraint PK_TBDEPART_PERS primary key nonclustered (IDDEPART, IDPERSONNEL)
-)
+﻿CREATE TABLE [dbo].[TBDEPART_PERS](
+	[IDDEPART] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+ CONSTRAINT [PK_TBDEPART_PERS] PRIMARY KEY NONCLUSTERED 
+(
+	[IDDEPART] ASC,
+	[IDPERSONNEL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : DEPART_PERS2_FK                                      */
-/*==============================================================*/
-create index DEPART_PERS2_FK on TBDEPART_PERS (
-IDDEPART ASC
-)
+ALTER TABLE [dbo].[TBDEPART_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBDEPART_PERS_TBDEPART] FOREIGN KEY([IDDEPART])
+REFERENCES [dbo].[TBDEPART] ([IDDEPART])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : DEPART_PERS_FK                                       */
-/*==============================================================*/
-create index DEPART_PERS_FK on TBDEPART_PERS (
-IDPERSONNEL ASC
-)
+
+ALTER TABLE [dbo].[TBDEPART_PERS] CHECK CONSTRAINT [FK_TBDEPART_PERS_TBDEPART]
+GO
+ALTER TABLE [dbo].[TBDEPART_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBDEPART_PERS_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBDEPART_PERS] CHECK CONSTRAINT [FK_TBDEPART_PERS_tbPersonnel]

@@ -1,10 +1,10 @@
-﻿/*==============================================================*/
-/* Table : TBBANQUE                                             */
-/*==============================================================*/
-create table TBBANQUE (
-   IDBANQUE             int                  not null,
-   LIBBANQUE            varchar(50)          null,
-   NUMCPTEVC            varchar(50)          null,
-   NUMCPTEBANQUE        varchar(50)          null,
-   constraint PK_TBBANQUE primary key nonclustered (IDBANQUE)
-)
+﻿CREATE TABLE [dbo].[TBBANQUE](
+	[IDBANQUE] [int] NOT NULL,
+	[LIBBANQUE] [varchar](50) NULL,
+	[NUMCPTEVC] [varchar](50) NULL,
+	[NUMCPTEBANQUE] [varchar](50) NULL,
+ CONSTRAINT [PK_TBBANQUE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDBANQUE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

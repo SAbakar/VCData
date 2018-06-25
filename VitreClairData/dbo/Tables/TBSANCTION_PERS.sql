@@ -1,24 +1,25 @@
-﻿/*==============================================================*/
-/* Table : TBSANCTION_PERS                                      */
-/*==============================================================*/
-create table TBSANCTION_PERS (
-   IDSANCTION           int                  not null,
-   IDPERSONNEL          int                  not null,
-   MOTIFSANCTION        varchar(120)         null,
-   NBREJOURSANCTION     int                  null,
-   constraint PK_TBSANCTION_PERS primary key nonclustered (IDSANCTION, IDPERSONNEL)
-)
+﻿CREATE TABLE [dbo].[TBSANCTION_PERS](
+	[IDSANCTION] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+	[MOTIFSANCTION] [varchar](120) NULL,
+	[NBREJOURSANCTION] [int] NULL,
+ CONSTRAINT [PK_TBSANCTION_PERS] PRIMARY KEY NONCLUSTERED 
+(
+	[IDSANCTION] ASC,
+	[IDPERSONNEL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : SANCTION_PERS2_FK                                    */
-/*==============================================================*/
-create index SANCTION_PERS2_FK on TBSANCTION_PERS (
-IDSANCTION ASC
-)
+ALTER TABLE [dbo].[TBSANCTION_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBSANCTION_PERS_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : SANCTION_PERS_FK                                     */
-/*==============================================================*/
-create index SANCTION_PERS_FK on TBSANCTION_PERS (
-IDPERSONNEL ASC
-)
+
+ALTER TABLE [dbo].[TBSANCTION_PERS] CHECK CONSTRAINT [FK_TBSANCTION_PERS_tbPersonnel]
+GO
+ALTER TABLE [dbo].[TBSANCTION_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBSANCTION_PERS_TBSANCTION] FOREIGN KEY([IDSANCTION])
+REFERENCES [dbo].[TBSANCTION] ([IDSANCTION])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBSANCTION_PERS] CHECK CONSTRAINT [FK_TBSANCTION_PERS_TBSANCTION]

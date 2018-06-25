@@ -1,13 +1,13 @@
-﻿/*==============================================================*/
-/* Table : TBAYANTDROIT                                         */
-/*==============================================================*/
-create table TBAYANTDROIT (
-   IDAYANTDROIT         int                  not null,
-   NOMAYANTDROIT        varchar(50)          null,
-   PRENOMAYANTDROIT     varchar(50)          null,
-   TEL1AYANTDROIT       varchar(50)          null,
-   TEL2AYANTDROIT       varchar(50)          null,
-   ADRESSEAYANTDROIT    varchar(50)          null,
-   LIENPARENTE          varchar(50)          null,
-   constraint PK_TBAYANTDROIT primary key nonclustered (IDAYANTDROIT)
-)
+﻿CREATE TABLE [dbo].[TBAYANTDROIT](
+	[IDAYANTDROIT] [int] NOT NULL,
+	[NOMAYANTDROIT] [varchar](50) NULL,
+	[PRENOMAYANTDROIT] [varchar](50) NULL,
+	[TEL1AYANTDROIT] [varchar](50) NULL,
+	[TEL2AYANTDROIT] [varchar](50) NULL,
+	[ADRESSEAYANTDROIT] [varchar](50) NULL,
+	[LIENPARENTE] [varchar](50) NULL,
+ CONSTRAINT [PK_TBAYANTDROIT] PRIMARY KEY NONCLUSTERED 
+(
+	[IDAYANTDROIT] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

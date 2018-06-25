@@ -1,16 +1,16 @@
-﻿/*==============================================================*/
-/* Table : TBPOSTE                                              */
-/*==============================================================*/
-create table TBPOSTE (
-   IDPOSTE              int                  not null,
-   IDCATEGORIE          int                  not null,
-   LIBPOSTE             varchar(50)          null,
-   constraint PK_TBPOSTE primary key nonclustered (IDPOSTE)
-)
+﻿CREATE TABLE [dbo].[TBPOSTE](
+	[IDPOSTE] [int] NOT NULL,
+	[IDCATEGORIE] [int] NOT NULL,
+	[LIBPOSTE] [varchar](50) NULL,
+ CONSTRAINT [PK_TBPOSTE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPOSTE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : APPARTIENT_FK                                        */
-/*==============================================================*/
-create index APPARTIENT_FK on TBPOSTE (
-IDCATEGORIE ASC
-)
+ALTER TABLE [dbo].[TBPOSTE]  WITH CHECK ADD  CONSTRAINT [FK_TBPOSTE_TBCATEGORIE] FOREIGN KEY([IDCATEGORIE])
+REFERENCES [dbo].[TBCATEGORIE] ([IDCATEGORIE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBPOSTE] CHECK CONSTRAINT [FK_TBPOSTE_TBCATEGORIE]

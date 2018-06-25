@@ -1,29 +1,29 @@
-﻿/*==============================================================*/
-/* Table : TBCONGE                                              */
-/*==============================================================*/
-create table TBCONGE (
-   IDCONGE              int                  not null,
-   IDPERSONNEL          int                  not null,
-   IDTYPECONGE          int                  not null,
-   MOTIFCONGE           varchar(100)         null,
-   DATEDUCONGE          datetime             null,
-   DATEAUCONGE          datetime             null,
-   DATEAUTORISATIONCONGE datetime             null,
-   DATEDEMANDECONGE     datetime             null,
-   AUTORISECONGE        bit                  null,
-   constraint PK_TBCONGE primary key nonclustered (IDCONGE)
-)
+﻿CREATE TABLE [dbo].[TBCONGE](
+	[IDCONGE] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDTYPECONGE] [int] NOT NULL,
+	[MOTIFCONGE] [varchar](100) NULL,
+	[DATEDUCONGE] [datetime] NULL,
+	[DATEAUCONGE] [datetime] NULL,
+	[DATEAUTORISATIONCONGE] [datetime] NULL,
+	[DATEDEMANDECONGE] [datetime] NULL,
+	[AUTORISECONGE] [bit] NULL,
+ CONSTRAINT [PK_TBCONGE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDCONGE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : CONGE_PERS_FK                                        */
-/*==============================================================*/
-create index CONGE_PERS_FK on TBCONGE (
-IDPERSONNEL ASC
-)
+ALTER TABLE [dbo].[TBCONGE]  WITH CHECK ADD  CONSTRAINT [FK_TBCONGE_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : LIERCONGER_FK                                        */
-/*==============================================================*/
-create index LIERCONGER_FK on TBCONGE (
-IDTYPECONGE ASC
-)
+
+ALTER TABLE [dbo].[TBCONGE] CHECK CONSTRAINT [FK_TBCONGE_tbPersonnel]
+GO
+ALTER TABLE [dbo].[TBCONGE]  WITH CHECK ADD  CONSTRAINT [FK_TBCONGE_TBTYPECONGE] FOREIGN KEY([IDTYPECONGE])
+REFERENCES [dbo].[TBTYPECONGE] ([IDTYPECONGE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBCONGE] CHECK CONSTRAINT [FK_TBCONGE_TBTYPECONGE]

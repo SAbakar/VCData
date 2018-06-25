@@ -1,16 +1,16 @@
-﻿/*==============================================================*/
-/* Table : TBZONE                                               */
-/*==============================================================*/
-create table TBZONE (
-   IDZONE               int                  not null,
-   IDVAGUE              int                  not null,
-   LIBZONE              varchar(50)          null,
-   constraint PK_TBZONE primary key nonclustered (IDZONE)
-)
+﻿CREATE TABLE [dbo].[TBZONE](
+	[IDZONE] [int] NOT NULL,
+	[IDVAGUE] [int] NOT NULL,
+	[LIBZONE] [varchar](50) NULL,
+ CONSTRAINT [PK_TBZONE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDZONE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : CONTIENT_FK                                          */
-/*==============================================================*/
-create index CONTIENT_FK on TBZONE (
-IDVAGUE ASC
-)
+ALTER TABLE [dbo].[TBZONE]  WITH CHECK ADD  CONSTRAINT [FK_TBZONE_TBVAGUE] FOREIGN KEY([IDVAGUE])
+REFERENCES [dbo].[TBVAGUE] ([IDVAGUE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBZONE] CHECK CONSTRAINT [FK_TBZONE_TBVAGUE]

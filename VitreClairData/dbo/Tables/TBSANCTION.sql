@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBSANCTION                                           */
-/*==============================================================*/
-create table TBSANCTION (
-   IDSANCTION           int                  not null,
-   LIBSANCTION          varchar(50)          null,
-   constraint PK_TBSANCTION primary key nonclustered (IDSANCTION)
-)
+﻿CREATE TABLE [dbo].[TBSANCTION](
+	[IDSANCTION] [int] NOT NULL,
+	[LIBSANCTION] [varchar](50) NULL,
+ CONSTRAINT [PK_TBSANCTION] PRIMARY KEY NONCLUSTERED 
+(
+	[IDSANCTION] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

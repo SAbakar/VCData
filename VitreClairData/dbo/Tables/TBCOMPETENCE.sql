@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBCOMPETENCE                                         */
-/*==============================================================*/
-create table TBCOMPETENCE (
-   IDCOMPETENCE         int                  not null,
-   LIBCOMPETENCE        varchar(100)         null,
-   constraint PK_TBCOMPETENCE primary key nonclustered (IDCOMPETENCE)
-)
+﻿CREATE TABLE [dbo].[TBCOMPETENCE](
+	[IDCOMPETENCE] [int] NOT NULL,
+	[LIBCOMPETENCE] [varchar](100) NULL,
+ CONSTRAINT [PK_TBCOMPETENCE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDCOMPETENCE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

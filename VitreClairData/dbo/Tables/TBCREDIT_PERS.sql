@@ -1,24 +1,25 @@
-﻿/*==============================================================*/
-/* Table : TBCREDIT_PERS                                        */
-/*==============================================================*/
-create table TBCREDIT_PERS (
-   IDPERSONNEL          int                  not null,
-   IDCREDIT             int                  not null,
-   DATEPAYEMENTCREDIT   datetime             null,
-   MONTANTPRELEVE       money                null,
-   constraint PK_TBCREDIT_PERS primary key nonclustered (IDPERSONNEL, IDCREDIT)
-)
+﻿CREATE TABLE [dbo].[TBCREDIT_PERS](
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDCREDIT] [int] NOT NULL,
+	[DATEPAYEMENTCREDIT] [datetime] NULL,
+	[MONTANTPRELEVE] [money] NULL,
+ CONSTRAINT [PK_TBCREDIT_PERS] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPERSONNEL] ASC,
+	[IDCREDIT] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : CREDIT_PERS2_FK                                      */
-/*==============================================================*/
-create index CREDIT_PERS2_FK on TBCREDIT_PERS (
-IDPERSONNEL ASC
-)
+ALTER TABLE [dbo].[TBCREDIT_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBCREDIT_PERS_TBCREDIT] FOREIGN KEY([IDCREDIT])
+REFERENCES [dbo].[TBCREDIT] ([IDCREDIT])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : CREDIT_PERS_FK                                       */
-/*==============================================================*/
-create index CREDIT_PERS_FK on TBCREDIT_PERS (
-IDCREDIT ASC
-)
+
+ALTER TABLE [dbo].[TBCREDIT_PERS] CHECK CONSTRAINT [FK_TBCREDIT_PERS_TBCREDIT]
+GO
+ALTER TABLE [dbo].[TBCREDIT_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBCREDIT_PERS_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBCREDIT_PERS] CHECK CONSTRAINT [FK_TBCREDIT_PERS_tbPersonnel]

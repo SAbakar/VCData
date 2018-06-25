@@ -1,27 +1,28 @@
-﻿/*==============================================================*/
-/* Table : TBHEURESUP                                           */
-/*==============================================================*/
-create table TBHEURESUP (
-   IDPERSONNEL          int                  not null,
-   IDCLIENTADHOC        int                  not null,
-   DATEHEURESUP         datetime             null,
-   MONTANTHEURESUP      money                null,
-   IDCHEFEQUIPE         int                  null,
-   HEUREDEBUTSUP        datetime             null,
-   HEUREFINSUP          datetime             null,
-   constraint PK_TBHEURESUP primary key nonclustered (IDPERSONNEL, IDCLIENTADHOC)
-)
+﻿CREATE TABLE [dbo].[TBHEURESUP](
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDCLIENTADHOC] [int] NOT NULL,
+	[DATEHEURESUP] [datetime] NULL,
+	[MONTANTHEURESUP] [money] NULL,
+	[IDCHEFEQUIPE] [int] NULL,
+	[HEUREDEBUTSUP] [datetime] NULL,
+	[HEUREFINSUP] [datetime] NULL,
+ CONSTRAINT [PK_TBHEURESUP] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPERSONNEL] ASC,
+	[IDCLIENTADHOC] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : HEURESUP2_FK                                         */
-/*==============================================================*/
-create index HEURESUP2_FK on TBHEURESUP (
-IDPERSONNEL ASC
-)
+ALTER TABLE [dbo].[TBHEURESUP]  WITH CHECK ADD  CONSTRAINT [FK_TBHEURESUP_TBCLIENTINTERVENTIONADHOC] FOREIGN KEY([IDCLIENTADHOC])
+REFERENCES [dbo].[TBCLIENTINTERVENTIONADHOC] ([IDCLIENTADHOC])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : HEURESUP_FK                                          */
-/*==============================================================*/
-create index HEURESUP_FK on TBHEURESUP (
-IDCLIENTADHOC ASC
-)
+
+ALTER TABLE [dbo].[TBHEURESUP] CHECK CONSTRAINT [FK_TBHEURESUP_TBCLIENTINTERVENTIONADHOC]
+GO
+ALTER TABLE [dbo].[TBHEURESUP]  WITH CHECK ADD  CONSTRAINT [FK_TBHEURESUP_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBHEURESUP] CHECK CONSTRAINT [FK_TBHEURESUP_tbPersonnel]

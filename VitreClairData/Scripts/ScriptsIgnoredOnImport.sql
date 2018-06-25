@@ -1,493 +1,350 @@
 ﻿
-/*==============================================================*/
-/* Nom de SGBD :  Microsoft SQL Server 2008                     */
-/* Date de création :  31/03/2018 10:38:56                      */
-/*==============================================================*/
-
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBABSENCE')
-            and   name  = 'ABSENCE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBABSENCE.ABSENCE_PERS_FK
+/****** Object:  Table [dbo].[TBABSENCE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBABSENCE')
-            and   type = 'U')
-   drop table TBABSENCE
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBACCOMPTE')
-            and   name  = 'ACCOMPTE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBACCOMPTE.ACCOMPTE_PERS_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBACCOMPTE')
-            and   type = 'U')
-   drop table TBACCOMPTE
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBAFFECTATION_ZONE')
-            and   name  = 'AFFECTATION_ZONE_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBAFFECTATION_ZONE.AFFECTATION_ZONE_FK
+/****** Object:  Table [dbo].[TBACCOMPTE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBAFFECTATION_ZONE')
-            and   name  = 'AFFECTATION_ZONE2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBAFFECTATION_ZONE.AFFECTATION_ZONE2_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBAFFECTATION_ZONE')
-            and   type = 'U')
-   drop table TBAFFECTATION_ZONE
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBAYANTDROIT')
-            and   type = 'U')
-   drop table TBAYANTDROIT
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBAYANTDROIT_PERS')
-            and   name  = 'AYANTDROIT_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBAYANTDROIT_PERS.AYANTDROIT_PERS_FK
+/****** Object:  Table [dbo].[TBAFFECTATION_ZONE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBAYANTDROIT_PERS')
-            and   name  = 'AYANTDROIT_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBAYANTDROIT_PERS.AYANTDROIT_PERS2_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBAYANTDROIT_PERS')
-            and   type = 'U')
-   drop table TBAYANTDROIT_PERS
+/****** Object:  Table [dbo].[TBARRONDISSEMENT]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBBANQUE')
-            and   type = 'U')
-   drop table TBBANQUE
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCATEGORIE')
-            and   type = 'U')
-   drop table TBCATEGORIE
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCLIENTINTERVENTIONADHOC')
-            and   type = 'U')
-   drop table TBCLIENTINTERVENTIONADHOC
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCOMPETENCE')
-            and   type = 'U')
-   drop table TBCOMPETENCE
+/****** Object:  Table [dbo].[TBAYANTDROIT]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCOMPETENCE_PERS')
-            and   name  = 'COMPETENCE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCOMPETENCE_PERS.COMPETENCE_PERS_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCOMPETENCE_PERS')
-            and   name  = 'COMPETENCE_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCOMPETENCE_PERS.COMPETENCE_PERS2_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCOMPETENCE_PERS')
-            and   type = 'U')
-   drop table TBCOMPETENCE_PERS
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCONGE')
-            and   name  = 'LIERCONGER_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCONGE.LIERCONGER_FK
+/****** Object:  Table [dbo].[TBAYANTDROIT_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCONGE')
-            and   name  = 'CONGE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCONGE.CONGE_PERS_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCONGE')
-            and   type = 'U')
-   drop table TBCONGE
+/****** Object:  Table [dbo].[TBBANQUE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCREDIT')
-            and   type = 'U')
-   drop table TBCREDIT
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCREDIT_PERS')
-            and   name  = 'CREDIT_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCREDIT_PERS.CREDIT_PERS_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBCREDIT_PERS')
-            and   name  = 'CREDIT_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBCREDIT_PERS.CREDIT_PERS2_FK
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBCREDIT_PERS')
-            and   type = 'U')
-   drop table TBCREDIT_PERS
+/****** Object:  Table [dbo].[TBCATEGORIE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBDEPART')
-            and   type = 'U')
-   drop table TBDEPART
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBDEPART_PERS')
-            and   name  = 'DEPART_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBDEPART_PERS.DEPART_PERS_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBDEPART_PERS')
-            and   name  = 'DEPART_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBDEPART_PERS.DEPART_PERS2_FK
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBDEPART_PERS')
-            and   type = 'U')
-   drop table TBDEPART_PERS
+/****** Object:  Table [dbo].[TBCLIENTINTERVENTIONADHOC]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBHEURESUP')
-            and   name  = 'HEURESUP_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBHEURESUP.HEURESUP_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBHEURESUP')
-            and   name  = 'HEURESUP2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBHEURESUP.HEURESUP2_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBHEURESUP')
-            and   type = 'U')
-   drop table TBHEURESUP
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBMODEPAYEMENT')
-            and   type = 'U')
-   drop table TBMODEPAYEMENT
+/****** Object:  Table [dbo].[TBCOMPETENCE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPERSONNEL')
-            and   name  = 'SEXE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPERSONNEL.SEXE_PERS_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPERSONNEL')
-            and   name  = 'TYPEPID_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPERSONNEL.TYPEPID_PERS_FK
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPERSONNEL')
-            and   name  = 'BANQUE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPERSONNEL.BANQUE_PERS_FK
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPERSONNEL')
-            and   name  = 'HABITE_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPERSONNEL.HABITE_FK
+/****** Object:  Table [dbo].[TBCOMPETENCE_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBPERSONNEL')
-            and   type = 'U')
-   drop table TBPERSONNEL
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPOINTAGE')
-            and   name  = 'POINTAGE_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPOINTAGE.POINTAGE_FK
+/****** Object:  Table [dbo].[TBCONGE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPOINTAGE')
-            and   name  = 'POINTAGE2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPOINTAGE.POINTAGE2_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBPOINTAGE')
-            and   type = 'U')
-   drop table TBPOINTAGE
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPOSTE')
-            and   name  = 'APPARTIENT_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPOSTE.APPARTIENT_FK
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBPOSTE')
-            and   type = 'U')
-   drop table TBPOSTE
+/****** Object:  Table [dbo].[TBCREDIT]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBPRIME')
-            and   name  = 'PRIME_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBPRIME.PRIME_PERS_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBPRIME')
-            and   type = 'U')
-   drop table TBPRIME
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBQUARTIER')
-            and   type = 'U')
-   drop table TBQUARTIER
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBSALAIRE')
-            and   type = 'U')
-   drop table TBSALAIRE
+/****** Object:  Table [dbo].[TBCREDIT_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBSALAIRE_PERS')
-            and   name  = 'SALAIRE_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBSALAIRE_PERS.SALAIRE_PERS_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBSALAIRE_PERS')
-            and   name  = 'SALAIRE_PERS3_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBSALAIRE_PERS.SALAIRE_PERS3_FK
+/****** Object:  Table [dbo].[TBDEPART]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBSALAIRE_PERS')
-            and   name  = 'SALAIRE_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBSALAIRE_PERS.SALAIRE_PERS2_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBSALAIRE_PERS')
-            and   type = 'U')
-   drop table TBSALAIRE_PERS
+/****** Object:  Table [dbo].[TBDEPART_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBSANCTION')
-            and   type = 'U')
-   drop table TBSANCTION
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBSANCTION_PERS')
-            and   name  = 'SANCTION_PERS_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBSANCTION_PERS.SANCTION_PERS_FK
+/****** Object:  Table [dbo].[TBHEURESUP]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBSANCTION_PERS')
-            and   name  = 'SANCTION_PERS2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBSANCTION_PERS.SANCTION_PERS2_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBSANCTION_PERS')
-            and   type = 'U')
-   drop table TBSANCTION_PERS
+/****** Object:  Table [dbo].[TBMODEPAYEMENT]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBSEXE')
-            and   type = 'U')
-   drop table TBSEXE
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBTYPECONGE')
-            and   type = 'U')
-   drop table TBTYPECONGE
+SET ANSI_PADDING ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBTYPEPID')
-            and   type = 'U')
-   drop table TBTYPEPID
+SET ANSI_PADDING OFF
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBVAGUE')
-            and   type = 'U')
-   drop table TBVAGUE
+/****** Object:  Table [dbo].[TBPERSONNEL]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
 GO
 
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('TBZONE')
-            and   name  = 'CONTIENT_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index TBZONE.CONTIENT_FK
+SET QUOTED_IDENTIFIER ON
 GO
 
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('TBZONE')
-            and   type = 'U')
-   drop table TBZONE
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBPOINTAGE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Object:  Table [dbo].[TBPOSTE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBPRIME]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Object:  Table [dbo].[TBQUARTIER]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBSALAIRE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Object:  Table [dbo].[TBSALAIRE_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Object:  Table [dbo].[TBSANCTION]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBSANCTION_PERS]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBSEXE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBTYPECONGE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBTYPEPID]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBVAGUE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[TBZONE]    Script Date: 6/25/2018 8:59:39 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+SET ANSI_PADDING OFF
 GO

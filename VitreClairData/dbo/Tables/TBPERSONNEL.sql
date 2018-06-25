@@ -1,49 +1,56 @@
-﻿/*==============================================================*/
-/* Table : TBPERSONNEL                                          */
-/*==============================================================*/
-create table TBPERSONNEL (
-   IDPERSONNEL          int                  not null,
-   IDQUARTIER           int                  not null,
-   IDBANQUE             int                  not null,
-   IDTYPEPID            int                  not null,
-   IDSEXE               int                  not null,
-   MATPERSONNEL         varchar(20)          null,
-   NOMPERS              varchar(20)          null,
-   PRENOMPERS           varchar(20)          null,
-   DATENAISPERS         datetime             null,
-   DATERECRUTEMENT      datetime             null,
-   TEL1PERS             varchar(20)          null,
-   TEL2PERS             varchar(20)          null,
-   ADRESSPERS           varchar(100)         null,
-   OBSPERS              text                 null,
-   NUMPIDPERS           varchar(50)          null,
-   constraint PK_TBPERSONNEL primary key nonclustered (IDPERSONNEL)
-)
+﻿CREATE TABLE [dbo].[TBPERSONNEL](
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDQUARTIER] [int] NOT NULL,
+	[IDBANQUE] [int] NOT NULL,
+	[IDTYPEPID] [int] NOT NULL,
+	[IDSEXE] [int] NOT NULL,
+	[MATPERSONNEL] [varchar](20) NULL,
+	[NOMPERS] [varchar](20) NULL,
+	[PRENOMPERS] [varchar](20) NULL,
+	[DATENAISPERS] [datetime] NULL,
+	[DATERECRUTEMENT] [datetime] NULL,
+	[TEL1PERS] [varchar](20) NULL,
+	[TEL2PERS] [varchar](20) NULL,
+	[ADRESSPERS] [varchar](100) NULL,
+	[OBSPERS] [text] NULL,
+	[NUMPIDPERS] [varchar](50) NULL,
+ CONSTRAINT [PK_TBPERSONNEL] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPERSONNEL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : HABITE_FK                                            */
-/*==============================================================*/
-create index HABITE_FK on TBPERSONNEL (
-IDQUARTIER ASC
-)
+ALTER TABLE [dbo].[TBPERSONNEL]  WITH CHECK ADD  CONSTRAINT [FK_tbPersonnel_TBACCOMPTE] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBACCOMPTE] ([IDACCOMPTE])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : BANQUE_PERS_FK                                       */
-/*==============================================================*/
-create index BANQUE_PERS_FK on TBPERSONNEL (
-IDBANQUE ASC
-)
+
+ALTER TABLE [dbo].[TBPERSONNEL] CHECK CONSTRAINT [FK_tbPersonnel_TBACCOMPTE]
 GO
-/*==============================================================*/
-/* Index : TYPEPID_PERS_FK                                      */
-/*==============================================================*/
-create index TYPEPID_PERS_FK on TBPERSONNEL (
-IDTYPEPID ASC
-)
+ALTER TABLE [dbo].[TBPERSONNEL]  WITH CHECK ADD  CONSTRAINT [FK_tbPersonnel_TBBANQUE] FOREIGN KEY([IDBANQUE])
+REFERENCES [dbo].[TBBANQUE] ([IDBANQUE])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : SEXE_PERS_FK                                         */
-/*==============================================================*/
-create index SEXE_PERS_FK on TBPERSONNEL (
-IDSEXE ASC
-)
+
+ALTER TABLE [dbo].[TBPERSONNEL] CHECK CONSTRAINT [FK_tbPersonnel_TBBANQUE]
+GO
+ALTER TABLE [dbo].[TBPERSONNEL]  WITH CHECK ADD  CONSTRAINT [FK_tbPersonnel_TBQUARTIER] FOREIGN KEY([IDQUARTIER])
+REFERENCES [dbo].[TBQUARTIER] ([IDQUARTIER])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBPERSONNEL] CHECK CONSTRAINT [FK_tbPersonnel_TBQUARTIER]
+GO
+ALTER TABLE [dbo].[TBPERSONNEL]  WITH CHECK ADD  CONSTRAINT [FK_tbPersonnel_TBSEXE] FOREIGN KEY([IDSEXE])
+REFERENCES [dbo].[TBSEXE] ([IDSEXE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBPERSONNEL] CHECK CONSTRAINT [FK_tbPersonnel_TBSEXE]
+GO
+ALTER TABLE [dbo].[TBPERSONNEL]  WITH CHECK ADD  CONSTRAINT [FK_tbPersonnel_TBTYPEPID] FOREIGN KEY([IDTYPEPID])
+REFERENCES [dbo].[TBTYPEPID] ([IDTYPEPID])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBPERSONNEL] CHECK CONSTRAINT [FK_tbPersonnel_TBTYPEPID]

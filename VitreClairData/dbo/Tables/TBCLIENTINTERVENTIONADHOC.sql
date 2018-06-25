@@ -1,10 +1,10 @@
-﻿/*==============================================================*/
-/* Table : TBCLIENTINTERVENTIONADHOC                            */
-/*==============================================================*/
-create table TBCLIENTINTERVENTIONADHOC (
-   IDCLIENTADHOC        int                  not null,
-   NOMCLIENTADHOC       varchar(50)          null,
-   PRENOMCLTADHOC       varchar(50)          null,
-   TELCLTADHOC          varchar(30)          null,
-   constraint PK_TBCLIENTINTERVENTIONADHOC primary key nonclustered (IDCLIENTADHOC)
-)
+﻿CREATE TABLE [dbo].[TBCLIENTINTERVENTIONADHOC](
+	[IDCLIENTADHOC] [int] NOT NULL,
+	[NOMCLIENTADHOC] [varchar](50) NULL,
+	[PRENOMCLTADHOC] [varchar](50) NULL,
+	[TELCLTADHOC] [varchar](30) NULL,
+ CONSTRAINT [PK_TBCLIENTINTERVENTIONADHOC] PRIMARY KEY NONCLUSTERED 
+(
+	[IDCLIENTADHOC] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]

@@ -1,48 +1,50 @@
-﻿/*==============================================================*/
-/* Table : TBSALAIRE_PERS                                       */
-/*==============================================================*/
-create table TBSALAIRE_PERS (
-   IDSALAIRE            int                  not null,
-   IDPERSONNEL          int                  not null,
-   IDMODEPAYEMENT       int                  not null,
-   SBASE                money                null,
-   PRESPO               money                null,
-   FMEDICAUX            money                null,
-   PRATION              money                null,
-   PTRANSPORT           money                null,
-   GRATIF               money                null,
-   PRISQUE              money                null,
-   PDEPART              money                null,
-   PANIERSAL            money                null,
-   HSUP                 money                null,
-   CONGEPAYE            money                null,
-   ABSENCES             money                null,
-   ACCOMPTES            money                null,
-   PRETCONSENTI         money                null,
-   CNPS                 money                null,
-   IRPP                 money                null,
-   FIR                  money                null,
-   TAF                  money                null,
-   constraint PK_TBSALAIRE_PERS primary key nonclustered (IDSALAIRE, IDPERSONNEL, IDMODEPAYEMENT)
-)
+﻿CREATE TABLE [dbo].[TBSALAIRE_PERS](
+	[IDSALAIRE] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDMODEPAYEMENT] [int] NOT NULL,
+	[SBASE] [money] NULL,
+	[PRESPO] [money] NULL,
+	[FMEDICAUX] [money] NULL,
+	[PRATION] [money] NULL,
+	[PTRANSPORT] [money] NULL,
+	[GRATIF] [money] NULL,
+	[PRISQUE] [money] NULL,
+	[PDEPART] [money] NULL,
+	[PANIERSAL] [money] NULL,
+	[HSUP] [money] NULL,
+	[CONGEPAYE] [money] NULL,
+	[ABSENCES] [money] NULL,
+	[ACCOMPTES] [money] NULL,
+	[PRETCONSENTI] [money] NULL,
+	[CNPS] [money] NULL,
+	[IRPP] [money] NULL,
+	[FIR] [money] NULL,
+	[TAF] [money] NULL,
+ CONSTRAINT [PK_TBSALAIRE_PERS] PRIMARY KEY NONCLUSTERED 
+(
+	[IDSALAIRE] ASC,
+	[IDPERSONNEL] ASC,
+	[IDMODEPAYEMENT] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : SALAIRE_PERS2_FK                                     */
-/*==============================================================*/
-create index SALAIRE_PERS2_FK on TBSALAIRE_PERS (
-IDSALAIRE ASC
-)
+ALTER TABLE [dbo].[TBSALAIRE_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBSALAIRE_PERS_TBMODEPAYEMENT] FOREIGN KEY([IDMODEPAYEMENT])
+REFERENCES [dbo].[TBMODEPAYEMENT] ([IDMODEPAYEMENT])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : SALAIRE_PERS3_FK                                     */
-/*==============================================================*/
-create index SALAIRE_PERS3_FK on TBSALAIRE_PERS (
-IDPERSONNEL ASC
-)
+
+ALTER TABLE [dbo].[TBSALAIRE_PERS] CHECK CONSTRAINT [FK_TBSALAIRE_PERS_TBMODEPAYEMENT]
 GO
-/*==============================================================*/
-/* Index : SALAIRE_PERS_FK                                      */
-/*==============================================================*/
-create index SALAIRE_PERS_FK on TBSALAIRE_PERS (
-IDMODEPAYEMENT ASC
-)
+ALTER TABLE [dbo].[TBSALAIRE_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBSALAIRE_PERS_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBSALAIRE_PERS] CHECK CONSTRAINT [FK_TBSALAIRE_PERS_tbPersonnel]
+GO
+ALTER TABLE [dbo].[TBSALAIRE_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBSALAIRE_PERS_TBSALAIRE] FOREIGN KEY([IDSALAIRE])
+REFERENCES [dbo].[TBSALAIRE] ([IDSALAIRE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBSALAIRE_PERS] CHECK CONSTRAINT [FK_TBSALAIRE_PERS_TBSALAIRE]

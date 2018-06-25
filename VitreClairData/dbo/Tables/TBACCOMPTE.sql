@@ -1,18 +1,11 @@
-﻿/*==============================================================*/
-/* Table : TBACCOMPTE                                           */
-/*==============================================================*/
-create table TBACCOMPTE (
-   IDACCOMPTE           int                  not null,
-   IDPERSONNEL          int                  not null,
-   MONTANTACPTE         money                null,
-   MOISACPTE            varchar(50)          null,
-   OBSACPTE             text                 null,
-   constraint PK_TBACCOMPTE primary key nonclustered (IDACCOMPTE)
-)
-GO
-/*==============================================================*/
-/* Index : ACCOMPTE_PERS_FK                                     */
-/*==============================================================*/
-create index ACCOMPTE_PERS_FK on TBACCOMPTE (
-IDPERSONNEL ASC
-)
+﻿CREATE TABLE [dbo].[TBACCOMPTE](
+	[IDACCOMPTE] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+	[MONTANTACPTE] [money] NULL,
+	[MOISACPTE] [varchar](50) NULL,
+	[OBSACPTE] [text] NULL,
+ CONSTRAINT [PK_TBACCOMPTE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDACCOMPTE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]

@@ -1,22 +1,23 @@
-﻿/*==============================================================*/
-/* Table : TBCOMPETENCE_PERS                                    */
-/*==============================================================*/
-create table TBCOMPETENCE_PERS (
-   IDCOMPETENCE         int                  not null,
-   IDPERSONNEL          int                  not null,
-   constraint PK_TBCOMPETENCE_PERS primary key nonclustered (IDCOMPETENCE, IDPERSONNEL)
-)
+﻿CREATE TABLE [dbo].[TBCOMPETENCE_PERS](
+	[IDCOMPETENCE] [int] NOT NULL,
+	[IDPERSONNEL] [int] NOT NULL,
+ CONSTRAINT [PK_TBCOMPETENCE_PERS] PRIMARY KEY NONCLUSTERED 
+(
+	[IDCOMPETENCE] ASC,
+	[IDPERSONNEL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : COMPETENCE_PERS2_FK                                  */
-/*==============================================================*/
-create index COMPETENCE_PERS2_FK on TBCOMPETENCE_PERS (
-IDCOMPETENCE ASC
-)
+ALTER TABLE [dbo].[TBCOMPETENCE_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBCOMPETENCE_PERS_TBCOMPETENCE] FOREIGN KEY([IDCOMPETENCE])
+REFERENCES [dbo].[TBCOMPETENCE] ([IDCOMPETENCE])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : COMPETENCE_PERS_FK                                   */
-/*==============================================================*/
-create index COMPETENCE_PERS_FK on TBCOMPETENCE_PERS (
-IDPERSONNEL ASC
-)
+
+ALTER TABLE [dbo].[TBCOMPETENCE_PERS] CHECK CONSTRAINT [FK_TBCOMPETENCE_PERS_TBCOMPETENCE]
+GO
+ALTER TABLE [dbo].[TBCOMPETENCE_PERS]  WITH CHECK ADD  CONSTRAINT [FK_TBCOMPETENCE_PERS_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBCOMPETENCE_PERS] CHECK CONSTRAINT [FK_TBCOMPETENCE_PERS_tbPersonnel]

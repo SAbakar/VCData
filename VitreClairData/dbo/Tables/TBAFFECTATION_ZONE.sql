@@ -1,24 +1,34 @@
-﻿/*==============================================================*/
-/* Table : TBAFFECTATION_ZONE                                   */
-/*==============================================================*/
-create table TBAFFECTATION_ZONE (
-   IDPERSONNEL          int                  not null,
-   IDZONE               int                  not null,
-   DATEAFFECTATION      datetime             null,
-   TEMPORAIRE           bit                  null,
-   constraint PK_TBAFFECTATION_ZONE primary key nonclustered (IDPERSONNEL, IDZONE)
-)
+﻿CREATE TABLE [dbo].[TBAFFECTATION_ZONE](
+	[IDPERSONNEL] [int] NOT NULL,
+	[IDZONE] [int] NOT NULL,
+	[IDPOSTE] [int] NOT NULL,
+	[DATEAFFECTATION] [datetime] NULL,
+	[TEMPORAIRE] [bit] NULL,
+ CONSTRAINT [PK_TBAFFECTATION_ZONE] PRIMARY KEY NONCLUSTERED 
+(
+	[IDPERSONNEL] ASC,
+	[IDZONE] ASC,
+	[IDPOSTE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/*==============================================================*/
-/* Index : AFFECTATION_ZONE2_FK                                 */
-/*==============================================================*/
-create index AFFECTATION_ZONE2_FK on TBAFFECTATION_ZONE (
-IDPERSONNEL ASC
-)
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE]  WITH CHECK ADD  CONSTRAINT [FK_TBAFFECTATION_ZONE_tbPersonnel] FOREIGN KEY([IDPERSONNEL])
+REFERENCES [dbo].[TBPERSONNEL] ([IDPERSONNEL])
+ON UPDATE CASCADE
 GO
-/*==============================================================*/
-/* Index : AFFECTATION_ZONE_FK                                  */
-/*==============================================================*/
-create index AFFECTATION_ZONE_FK on TBAFFECTATION_ZONE (
-IDZONE ASC
-)
+
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE] CHECK CONSTRAINT [FK_TBAFFECTATION_ZONE_tbPersonnel]
+GO
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE]  WITH CHECK ADD  CONSTRAINT [FK_TBAFFECTATION_ZONE_TBPOSTE] FOREIGN KEY([IDPOSTE])
+REFERENCES [dbo].[TBPOSTE] ([IDPOSTE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE] CHECK CONSTRAINT [FK_TBAFFECTATION_ZONE_TBPOSTE]
+GO
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE]  WITH CHECK ADD  CONSTRAINT [FK_TBAFFECTATION_ZONE_TBZONE] FOREIGN KEY([IDZONE])
+REFERENCES [dbo].[TBZONE] ([IDZONE])
+ON UPDATE CASCADE
+GO
+
+ALTER TABLE [dbo].[TBAFFECTATION_ZONE] CHECK CONSTRAINT [FK_TBAFFECTATION_ZONE_TBZONE]

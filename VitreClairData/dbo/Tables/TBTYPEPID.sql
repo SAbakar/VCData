@@ -1,8 +1,8 @@
-﻿/*==============================================================*/
-/* Table : TBTYPEPID                                            */
-/*==============================================================*/
-create table TBTYPEPID (
-   IDTYPEPID            int                  not null,
-   LIBTYPEPID           varchar(50)          null,
-   constraint PK_TBTYPEPID primary key nonclustered (IDTYPEPID)
-)
+﻿CREATE TABLE [dbo].[TBTYPEPID](
+	[IDTYPEPID] [int] NOT NULL,
+	[LIBTYPEPID] [varchar](50) NULL,
+ CONSTRAINT [PK_TBTYPEPID] PRIMARY KEY NONCLUSTERED 
+(
+	[IDTYPEPID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
