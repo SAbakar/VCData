@@ -57,5 +57,42 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\TBABSENCE.sql" />
+    <Build Include="dbo\Tables\TBACCOMPTE.sql" />
+    <Build Include="dbo\Tables\TBAFFECTATION_ZONE.sql" />
+    <Build Include="dbo\Tables\TBAYANTDROIT.sql" />
+    <Build Include="dbo\Tables\TBAYANTDROIT_PERS.sql" />
+    <Build Include="dbo\Tables\TBBANQUE.sql" />
+    <Build Include="dbo\Tables\TBCATEGORIE.sql" />
+    <Build Include="dbo\Tables\TBCLIENTINTERVENTIONADHOC.sql" />
+    <Build Include="dbo\Tables\TBCOMPETENCE.sql" />
+    <Build Include="dbo\Tables\TBCOMPETENCE_PERS.sql" />
+    <Build Include="dbo\Tables\TBCONGE.sql" />
+    <Build Include="dbo\Tables\TBCREDIT.sql" />
+    <Build Include="dbo\Tables\TBCREDIT_PERS.sql" />
+    <Build Include="dbo\Tables\TBDEPART.sql" />
+    <Build Include="dbo\Tables\TBDEPART_PERS.sql" />
+    <Build Include="dbo\Tables\TBHEURESUP.sql" />
+    <Build Include="dbo\Tables\TBMODEPAYEMENT.sql" />
+    <Build Include="dbo\Tables\TBPERSONNEL.sql" />
+    <Build Include="dbo\Tables\TBPOINTAGE.sql" />
+    <Build Include="dbo\Tables\TBPOSTE.sql" />
+    <Build Include="dbo\Tables\TBPRIME.sql" />
+    <Build Include="dbo\Tables\TBQUARTIER.sql" />
+    <Build Include="dbo\Tables\TBSALAIRE.sql" />
+    <Build Include="dbo\Tables\TBSALAIRE_PERS.sql" />
+    <Build Include="dbo\Tables\TBSANCTION.sql" />
+    <Build Include="dbo\Tables\TBSANCTION_PERS.sql" />
+    <Build Include="dbo\Tables\TBSEXE.sql" />
+    <Build Include="dbo\Tables\TBTYPECONGE.sql" />
+    <Build Include="dbo\Tables\TBTYPEPID.sql" />
+    <Build Include="dbo\Tables\TBVAGUE.sql" />
+    <Build Include="dbo\Tables\TBZONE.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
   </ItemGroup>
 </Project>
